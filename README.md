@@ -6,6 +6,10 @@ The objective of this challenge is to estimate the sale price of some properties
 
 In the file that I provide in this repository, I perform data wrangling, cleaning and imputation, also creating new features that make sense in my reasoning, through feature engineering. The procedures are quite simple after all, these processes are well explained throughout the Python file.
 
+### About these Python files
+`house_prices.py` is the to-go file.
+`prices.py` is the file that I work on in my PC, kind of a mess that works for me.
+
 ## Categorical / Numerical Features
 NaN values ​​are treated on a case-by-case basis, with the imputation being the mode of some other feature or its median (whichever suits), for example. After the data processing, I end up with two different databases for training the models for this challenge. Some features are kept as originally supplied, others are changed from numeric to categorical.
 
