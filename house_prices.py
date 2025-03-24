@@ -479,8 +479,8 @@ variaveis_ohe = ohe.fit_transform(variaveis_quali.drop(['Origem', 'Id'], axis=1)
 
 # Now we create our two big datasets, one with OHE and one without, already dropping columns
 # 'Id' that are of no more use for our work now
-dados_ohe = pd.concat([variaveis_quanti2.reset_index(drop=True), variaveis_ohe], axis = 1).drop('Id', axis=1)  # one hot encoded data
-dados_sem = pd.concat([variaveis_quanti2.reset_index(drop=True), variaveis_quali.drop('Origem', axis=1).astype('category')], axis = 1).drop('Id', axis=1)  # No hot encoding
+dados_ohe = pd.concat([variaveis_quanti.reset_index(drop=True), variaveis_ohe], axis = 1).drop('Id', axis=1)  # one hot encoded data
+dados_sem = pd.concat([variaveis_quanti.reset_index(drop=True), variaveis_quali.drop('Origem', axis=1).astype('category')], axis = 1).drop('Id', axis=1)  # No hot encoding
 
 # Just a little information here:
 # 'Curse of Dimensionality' refers to the challenges in analyzing data with many variables (in absolute terms or in relation to 
