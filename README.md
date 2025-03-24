@@ -1,25 +1,40 @@
-# Desafio Kaggle: House Prices
-## Técnicas Avançadas de Regressão 
-Desafio disponível em https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/
+# Kaggle Challenge: House Prices
+## Advanced Regression Techniques
+Challenge available at https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/
 
-Este estudo tem como objetivo estimar o valor correto de venda para cada casa do banco de dados proposto (test.csv), através da variável SalePrice. Os resultados são classficados de acordo com o erro quadrático médio (RMSE): quanto menor, melhor. São divulgados dois arquivos de Jupyter Notebook, citadamente 'house_prices.ipynb' e 'house_prices_adv.ipynb', o primeiro sendo a programação utilizada para a obtenção dos resultados descritos abaixo.
+The objective of this challenge is to estimate the sale price of some properties based on 80 features contained in the available training and testing datasets. The results are classified according to the root mean square log error (RMSLE): the lower the better, with the perfect score being zero.
 
-É utilizada linguagem Python por meio de arquivo Jupyter Notebook para a programação da solução do problema proposto, com aplicação de técnicas simples de data wrangling, imputação e estimação de resultados obtidos por modelos de aprendizado de máquinas supervisionado, utilizando especificamente a biblioteca Scikit-Learn.
+In the file that I provide in this repository, I perform data wrangling, cleaning and imputation, also creating new features that make sense in my reasoning, through feature engineering. The procedures are quite simple after all, these processes are well explained throughout the Python file.
 
+## Categorical / Numerical Features
+NaN values ​​are treated on a case-by-case basis, with the imputation being the mode of some other feature or its median (whichever suits), for example. After the data processing, I end up with two different databases for training the models for this challenge. Some features are kept as originally supplied, others are changed from numeric to categorical.
 
-### Modelos de regressão utilizados
+## Feature Engeneering
+Based on the datasets, I create some new variables to help train the models:
+- Age of the house, renovations and garage
+- Total areas (basements, patio, etc.)
+- I create new categorical variables for the existence of decks, porches and pools
+- I separate the information about the number of bathrooms
+- So on and so forth...
 
-- Regressão Linear (linear regression)
-- Decision Tree (árvore de decisões)
-- KNN - K Nearest Neighbors (Vizinhança Próxima)
-- Gradient Booster
-- Ridge
-- Bayesian Ridge Regression
+## Outlier Detection
+I estimate outliers with the help of some bloxplot graphs. In the script, I present the information already filtered, but you can simply change the code a little if you want and the full information is shown in the graph. To filter outliers, I use the interquartile ranges approach.
 
-Na primeira abordagem o médodo GBR (gradient booster) mostrou-se o mais eficaz, com uma pontuação de 0.14569, entrando no leaderboard mundial na posição 2227 no momento da submissão (arquivo 'resultado.csv').
+## Pre-training adjustments: OHE
+To ensure that all categorical variables are used in training, I perform One Hot Encoding (or dummyization) over the categorical variables using `scikit-learn` functions, and for study purposes I separate this result into two distinct datasets: one that has been processed through the One Hot Encoding and another that did not go through the process, so that easy comparison is possible when training the models.
 
-Em uma segunda abordagem, onde são testadas várias metodologias de normalização dos valores numéricos do dataset, os resultados mostraram-se ambíguos: desde levemente satisfatórios (melhor pontuação) até muito insatisfatórios (pontuação significativamente pior). A depender da técnica de normalização o melhor modelo de regressão pode se alterar. Estudo e comentários pertinentes disponíveis no arquivo 'house_prices_adv.ipynb'.
+## Regression models used
+For this study, I code and train machine learning models based on `xgboost`, `catboost`, `lightgbm` and `randomforest` (this one from `sklearn`).
 
+In my first approach to this problem, I used the `sklearn` GBR (gradient booster) algorithm, among others. This trained model resulted in a final RMSLE score of 0.14569, ranking me in position 2227 (top 8% at the time) on the world leaderboard at the time of submission of the results.
 
-### Relação dos arquivos disponibilizados
-A exceção dos arquivos Jupyter Notebook e de resultados, os demais arquivos são constantes e contem todas e quaisquer informações utilizadas desde a primeira abordagem ao conteúdo. Os resultados estimados para submissão da análise simplificada ('house_prices.ipynb') encontram-se no arquivo 'resultado.csv'. Os resultados estimados para as submissões da análise posterior às técnicas de normalização de variáveis numéricas são os demais arquivos com nomes que iniciam com'resultado'.
+When reviewing this file to share here, I ended up working on it a little better and managed to improve my score to 0.13030, which took me to position 1067 at the time - a good progress in this review.
+
+## Testing area
+Some ideas of what you can change in the structure as a whole to try to improve your score:
+- Normalization of variables
+- Different treatment of outliers
+- Different imputation methods
+- Different interpretation of my reasoning presented
+
+Did you get a better score than me, based on my file? Send me a message because I'm curious to know what we did differently!
