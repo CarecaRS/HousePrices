@@ -8,6 +8,7 @@ In the file that I provide in this repository, I perform data wrangling, cleanin
 
 ### About these Python files
 `house_prices.py` is the to-go file.
+
 `prices.py` is the file that I work on in my PC, kind of a mess that works for me.
 
 ## Categorical / Numerical Features
