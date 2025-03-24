@@ -1,8 +1,0 @@
-Variaveis Quali
-
-SUBSTITUIÇÕES
-
-SaleType ('', '', '', '', '', '', ''],)
-SaleCondition ('', '', '')
-
-
